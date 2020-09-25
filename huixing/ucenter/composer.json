@@ -1,0 +1,38 @@
+{
+    "name": "huixing/ucenter",
+    "authors": [
+        {
+            "name": "谈浩",
+            "email": "tanhao@gnway.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "symfony/dom-crawler": "^5.1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Huixing\\UCenter\\": "src/",
+            "Huixing\\UCenter\\Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Huixing\\UCenter\\UCenterServiceProvider"
+            ],
+            "aliases": {
+                "Admin": "Huixing\\UCenter\\Facades\\UCenter"
+            }
+        }
+    },
+    "repositories": {
+        "huixing": {
+            "type": "path",
+            "url": "/Users/tanhao/Dev/php_projects/packages/huixing/ucenter/"
+        }
+    }
+}

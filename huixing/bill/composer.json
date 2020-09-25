@@ -1,0 +1,29 @@
+{
+    "name": "huixing/bill",
+    "description": "bill system",
+    "type": "library",
+    "authors": [
+        {
+            "name": "谈浩",
+            "email": "tanhao@gnway.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Huixing\\Bill": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Huixing\\Bill\\Provider\\BillProvider"
+            ]
+        }
+    }
+}

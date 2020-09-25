@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b3dbca7a-bdf7-4197-9eb1-98f1c918076e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1hOjRDP10hmUR4jqOgE80fdKgT6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/huixing/ucenter/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/huixing/ucenter/src" />
+      <recent name="$PROJECT_DIR$/huixing/ucenter/database/seeders" />
+      <recent name="$PROJECT_DIR$/huixing/ucenter/database/migrations" />
+      <recent name="$PROJECT_DIR$/huixing/admin/resources/assets/AdminLTE" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3dbca7a-bdf7-4197-9eb1-98f1c918076e" name="Default Changelist" comment="" />
+      <created>1599889021531</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599889021531</updated>
+      <workItem from="1599889022582" duration="15767000" />
+      <workItem from="1601028766992" duration="553000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="529" y="313" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599979042790">
+      <screen x="0" y="23" width="1680" height="965" />
+    </state>
+    <state x="529" y="313" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.965@0.23.1680.965" timestamp="1599979042790" />
+    <state x="647" y="238" key="NewPhpClassDialog" timestamp="1599979773873">
+      <screen x="0" y="23" width="1680" height="965" />
+    </state>
+    <state x="647" y="237" key="NewPhpClassDialog/0.23.1680.963@0.23.1680.963" timestamp="1599925931429" />
+    <state x="647" y="238" key="NewPhpClassDialog/0.23.1680.965@0.23.1680.965" timestamp="1599979773873" />
+    <state x="647" y="238" key="NewPhpClassDialog/0.23.1680.966@0.23.1680.966" timestamp="1599927079675" />
+    <state x="782" y="433" key="NewPhpFileDialog" timestamp="1601029116112">
+      <screen x="0" y="23" width="1680" height="962" />
+    </state>
+    <state x="782" y="433" key="NewPhpFileDialog/0.23.1680.962@0.23.1680.962" timestamp="1601029116112" />
+    <state x="782" y="434" key="NewPhpFileDialog/0.23.1680.965@0.23.1680.965" timestamp="1599992722437" />
+    <state x="538" y="230" width="613" height="551" key="find.popup" timestamp="1599994611815">
+      <screen x="0" y="23" width="1680" height="966" />
+    </state>
+    <state x="538" y="230" width="604" height="548" key="find.popup/0.23.1680.963@0.23.1680.963" timestamp="1599889232911" />
+    <state x="538" y="230" width="604" height="550" key="find.popup/0.23.1680.965@0.23.1680.965" timestamp="1599993791139" />
+    <state x="538" y="230" width="613" height="551" key="find.popup/0.23.1680.966@0.23.1680.966" timestamp="1599994611815" />
+  </component>
+</project>

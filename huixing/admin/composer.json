@@ -1,0 +1,38 @@
+{
+    "name": "huixing/admin",
+    "authors": [
+        {
+            "name": "谈浩",
+            "email": "tanhao@gnway.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "symfony/dom-crawler": "^5.1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Huixing\\Admin\\": "src/",
+            "Huixing\\Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Huixing\\Admin\\AdminServiceProvider"
+            ],
+            "aliases": {
+                "Admin": "Huixing\\Admin\\Facades\\Admin"
+            }
+        }
+    },
+    "repositories": {
+        "huixing": {
+            "type": "path",
+            "url": "/Users/tanhao/Dev/php_projects/packages/huixing/admin/"
+        }
+    }
+}
