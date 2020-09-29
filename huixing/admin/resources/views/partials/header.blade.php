@@ -34,6 +34,32 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
+        <!-- User Account Menu -->
+        <li class="nav-item dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <!-- The user image in the navbar-->
+            <img style="margin-top: 3px;" src="{{ Admin::user()->avatar }}" data-toggle="dropdown" class="elevation-2 user-image dropdown-toggle" alt="User Image">
+            <ul class="dropdown-menu">
+                <!-- The user image in the menu -->
+                <li class="user-header">
+                    <img src="{{ Admin::user()->avatar }}" class="img-circle" alt="User Image">
+
+                    <p>
+                        {{ Admin::user()->name }}
+                        <small>Member since admin {{ Admin::user()->created_at }}</small>
+                    </p>
+                </li>
+                <li class="user-footer">
+                    <div class="float-left">
+                        <a href="{{ admin_url('auth/setting') }}" class="btn btn-default btn-flat">{{ trans('admin.setting') }}</a>
+                    </div>
+                    <div class="float-right">
+                        <a href="{{ admin_url('auth/logout') }}" class="btn btn-default btn-flat">{{ trans('admin.logout') }}</a>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <!-- Control Sidebar Toggle Button -->
 {{--        @include("admin::widgets.control-sidebar")--}}
     </ul>
 </nav>

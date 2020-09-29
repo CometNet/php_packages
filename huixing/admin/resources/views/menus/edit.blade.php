@@ -59,7 +59,7 @@
                                                 @php($_roles[] = $item->id)
                                             @endforeach
                                             @foreach($roles as $item)
-                                                @if(in_array($item['id'],$_roles))
+                                                @if(isset($_roles) && in_array($item['id'],$_roles))
                                                     <option selected value="{{$item['id']}}">{{$item['name']}}</option>
                                                 @else
                                                     <option value="{{$item['id']}}">{{$item['name']}}</option>

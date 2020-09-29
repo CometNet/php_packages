@@ -6,8 +6,10 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Invoice</li>
+                    <li class="breadcrumb-item"><a href="{{ admin_url('/') }}">Home</a></li>
+                    @for($i = 2; $i <= count(Request::segments()); $i++)
+                    <li class="breadcrumb-item active">{{ucfirst(Request::segment($i))}}</li>
+                    @endfor
                 </ol>
             </div>
         </div>

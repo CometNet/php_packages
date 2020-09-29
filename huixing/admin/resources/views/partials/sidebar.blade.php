@@ -22,18 +22,21 @@
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
+                <input class="form-control form-control-sidebar" autocomplete="off" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append"><button class="btn btn-sidebar"><i class="fas fa-search fa-fw"></i></button></div>
+                <ul class="dropdown-menu" role="menu" style="min-width: 210px;max-height: 300px;overflow: auto;">
+                    @foreach(Admin::menuLinks() as $link)
+                        <li>
+                            <a href="{{ admin_url($link['uri']) }}"><i class="fa {{ $link['icon'] }}"></i>{{ admin_trans($link['title']) }}</a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
 {{--        @endif--}}
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-collapse-hide-child nav-flat nav-compact text-sm" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="sidebar-menu nav nav-pills nav-sidebar flex-column nav-child-indent nav-collapse-hide-child nav-flat nav-compact text-sm" data-widget="treeview" role="menu" data-accordion="false">
                 @each('admin::partials.menu', Admin::menu(), 'item')
             </ul>
         </nav>

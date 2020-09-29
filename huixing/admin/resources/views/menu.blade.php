@@ -8,53 +8,60 @@
 <section class="content">
     <div class="row">
         <div class="col-md-6">
-            <div class="box">
-                <div class="box-header">
-
-                    <div class="btn-group">
-                        <a class="btn btn-primary btn-sm dd-tree-tools" data-action="expand" title="展开">
-                            <i class="fa fa-plus-square-o"></i>&nbsp;展开
-                        </a>
-                        <a class="btn btn-primary btn-sm dd-tree-tools" data-action="collapse" title="收起">
-                            <i class="fa fa-minus-square-o"></i>&nbsp;收起
-                        </a>
-                    </div>
-
-                    <div class="btn-group">
-                        <a class="btn btn-info btn-sm dd-save" title="保存"><i class="fa fa-save"></i><span class="hidden-xs">&nbsp;保存</span></a>
-                    </div>
-
-                    <div class="btn-group">
-                        <a class="btn btn-warning btn-sm dd-refresh" title="刷新"><i class="fa fa-refresh"></i><span class="hidden-xs">&nbsp;刷新</span></a>
-                    </div>
-                    <div class="btn-group">
-                    </div>
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title">快速调整</h3>
                 </div>
-                <div class="box-body table-responsive no-padding">
-                    <div class="dd">
-                        <ol class="dd-list">
-                            @each('admin::menus.dd-item', Admin::menu(), 'item')
-                        </ol>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form>
+                    <div class="card-body">
+                        <div class="dd">
+                            <ol class="dd-list">
+                                @each('admin::menus.dd-item', Admin::menu(), 'item')
+                            </ol>
+                        </div>
                     </div>
-                </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+
+                        <div class="btn-group">
+                            <a class="btn btn-primary dd-tree-tools" data-action="expand" title="展开">
+                                <i class="fa fa-plus-square-o"></i>&nbsp;展开
+                            </a>
+                            <a class="btn btn-primary dd-tree-tools" data-action="collapse" title="收起">
+                                <i class="fa fa-minus-square-o"></i>&nbsp;收起
+                            </a>
+                        </div>
+
+                        <div class="btn-group float-right">
+                            <a class="btn btn-info dd-save" title="保存"><i class="fa fa-save"></i><span class="hidden-xs">&nbsp;保存</span></a>
+                        </div>
+
+                        <div class="btn-group float-right">
+                            <a class="btn btn-warning dd-refresh" title="刷新"><i class="fa fa-refresh"></i><span class="hidden-xs">&nbsp;刷新</span></a>
+                        </div>
+                        <div class="btn-group">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card card-primary">
+            <div class="card card-success">
                 <div class="card-header"><h3 class="card-title">新增</h3></div>
                 <form method="post" action="{{admin_base_path('auth/menu')}}" class="form-horizontal">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">父级菜单</label>
-                            <div class="col-sm-10">
-                                <select name="parent_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                                    <option value="0">ROOT</option>
-                                    @foreach($menus as $item)
-                                        <option value="{{$item['id']}}">{{$item['title']}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <select name="parent_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                                <option value="0">ROOT</option>
+                                @foreach($menus as $item)
+                                    <option value="{{$item['id']}}">{{$item['title']}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword3">*标题</label>

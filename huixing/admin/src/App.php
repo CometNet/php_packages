@@ -56,6 +56,7 @@ class App {
                 $router->resource('auth/menu', 'MenuController', ['except' => ['create']])->names('admin.auth.menu');
 //                $router->resource('auth/logs', 'LogController', ['only' => ['index', 'destroy']])->names('admin.auth.logs');
                 $router->get('api/roles/list', 'RoleController@getlist')->name('admin.auth.roles.list');
+                $router->get('api/users/list', 'UserController@getlist')->name('admin.auth.users.list');
                 $router->get('api/permissions/list', 'PermissionController@getlist')->name('admin.auth.permissions.list');
             });
 
@@ -89,5 +90,27 @@ class App {
         return $this->menu = $menuModel->toTree();
     }
 
+    /**
+     * @param array $menu
+     *
+     * @return array
+     */
+    public function menuLinks($menu = [])
+    {
+        if (empty($menu)) {
+            $menu = $this->menu();
+        }
 
+        $links = [];
+
+        foreach ($menu as $item) {
+            if (!empty($item['children'])) {
+                $links = array_merge($links, $this->menuLinks($item['children']));
+            } else {
+                $links[] = Arr::only($item, ['title', 'uri', 'icon']);
+            }
+        }
+
+        return $links;
+    }
 }

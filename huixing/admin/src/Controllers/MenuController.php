@@ -20,8 +20,8 @@ class MenuController extends Controller
     }
 
     public function list(Request $request){
-        $m = new Menu();
-
+        $model = new Menu();
+        echo json_encode(['rows' => $model->get(), 'total' => $model->count()]);
     }
 
     public function store(Request $request){
