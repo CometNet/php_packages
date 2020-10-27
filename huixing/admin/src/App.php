@@ -3,6 +3,7 @@
 namespace Huixing\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use InvalidArgumentException;
@@ -112,5 +113,9 @@ class App {
         }
 
         return $links;
+    }
+
+    public function is_pjax(Request $request){
+        return $request->pjax();
     }
 }

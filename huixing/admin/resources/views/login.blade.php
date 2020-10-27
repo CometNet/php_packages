@@ -28,12 +28,26 @@
             <form action="{{ admin_url('auth/login') }}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="input-group mb-3">
+                    @if($errors->has('username'))
+                        @foreach($errors->get('username') as $message)
+                            <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="input-group mb-3">
                     <input type="text" class="form-control" name="username" placeholder="username" value="{{ old('username') }}">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
+                </div>
+                <div class="input-group mb-3">
+                    @if($errors->has('password'))
+                        @foreach($errors->get('password') as $message)
+                            <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i>{{$message}}</label><br>
+                        @endforeach
+                    @endif
                 </div>
                 <div class="input-group mb-3">
                     <input type="password" name="password" class="form-control" placeholder="Password">
@@ -75,7 +89,7 @@
                 <a href="forgot-password.html">I forgot my password</a>
             </p>
             <p class="mb-0">
-                <a href="register.html" class="text-center">Register a new membership</a>
+                <a href="register" class="text-center">Register a new membership</a>
             </p>
         </div>
         <!-- /.login-card-body -->

@@ -11,7 +11,7 @@ class CreateUcenterTables extends Migration
      */
     public function getConnection()
     {
-        return config('admin.database.connection') ?: config('database.default');
+        return config('ucenter.database.connection') ?: config('database.default');
     }
 
     /**
@@ -21,82 +21,43 @@ class CreateUcenterTables extends Migration
      */
     public function up()
     {
-        Schema::create(config('admin.database.users_table'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('username', 190)->unique();
-            $table->string('password', 60);
-            $table->string('name');
+        Schema::table(config('ucenter.database.users_table'),function (Blueprint $table) {
             $table->string('avatar')->nullable();
-            $table->string('remember_token', 100)->nullable();
+            $table->string('username', 190)->unique();
+            $table->tinyInteger('stat')->nullable();
+            $table->decimal('money')->nullable();
+            $table->string('phone')->nullable();
+        });
+
+        /**
+         * 充值明细
+         */
+        Schema::table('costs',function (Blueprint $table) {
+            $table->id();
+            $table->increments('user_id')->nullable();
+            $table->string('name')->comment('充值名称');
+            $table->tinyInteger('type')->nullable()->comment('1:支付宝,2:网银转账');
+            $table->tinyInteger('stat')->nullable()->comment('0:未支付,1:已支付');
+            $table->decimal('before_money')->nullable()->comment('充值前金额');
+            $table->decimal('money')->nullable()->comment('充值金额');
+            $table->string('description')->nullable()->comment('备注描述');
+            $table->string('order_id')->nullable()->comment('订单号');
+            $table->string('account')->nullable()->comment('充值账号');
             $table->timestamps();
         });
 
-        Schema::create(config('admin.database.roles_table'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50)->unique();
-            $table->string('slug', 50)->unique();
-            $table->timestamps();
-        });
-
-        Schema::create(config('admin.database.permissions_table'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50)->unique();
-            $table->string('slug', 50)->unique();
-            $table->string('http_method')->nullable();
-            $table->text('http_path')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create(config('admin.database.menu_table'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('parent_id')->default(0);
-            $table->integer('order')->default(0);
-            $table->string('title', 50);
-            $table->string('icon', 50);
-            $table->string('uri')->nullable();
-            $table->string('permission')->nullable();
-
-            $table->timestamps();
-        });
-
-        Schema::create(config('admin.database.role_users_table'), function (Blueprint $table) {
-            $table->integer('role_id');
-            $table->integer('user_id');
-            $table->index(['role_id', 'user_id']);
-            $table->timestamps();
-        });
-
-        Schema::create(config('admin.database.role_permissions_table'), function (Blueprint $table) {
-            $table->integer('role_id');
-            $table->integer('permission_id');
-            $table->index(['role_id', 'permission_id']);
-            $table->timestamps();
-        });
-
-        Schema::create(config('admin.database.user_permissions_table'), function (Blueprint $table) {
-            $table->integer('user_id');
-            $table->integer('permission_id');
-            $table->index(['user_id', 'permission_id']);
-            $table->timestamps();
-        });
-
-        Schema::create(config('admin.database.role_menu_table'), function (Blueprint $table) {
-            $table->integer('role_id');
-            $table->integer('menu_id');
-            $table->index(['role_id', 'menu_id']);
-            $table->timestamps();
-        });
-
-        Schema::create(config('admin.database.operation_log_table'), function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
-            $table->string('path');
-            $table->string('method', 10);
-            $table->string('ip');
-            $table->text('input');
-            $table->index('user_id');
-            $table->timestamps();
-        });
+//        /**
+//         * 消费明细
+//         */
+//        Schema::table('cost_consumer',function (Blueprint $table) {
+//            $table->id();
+//            $table->string('name');
+//            $table->tinyInteger('type')->nullable();
+//            $table->decimal('before_money')->nullable();
+//            $table->decimal('money')->nullable();
+//            $table->string('description')->nullable();
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -106,14 +67,12 @@ class CreateUcenterTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('admin.database.users_table'));
-        Schema::dropIfExists(config('admin.database.roles_table'));
-        Schema::dropIfExists(config('admin.database.permissions_table'));
-        Schema::dropIfExists(config('admin.database.menu_table'));
-        Schema::dropIfExists(config('admin.database.user_permissions_table'));
-        Schema::dropIfExists(config('admin.database.role_users_table'));
-        Schema::dropIfExists(config('admin.database.role_permissions_table'));
-        Schema::dropIfExists(config('admin.database.role_menu_table'));
-        Schema::dropIfExists(config('admin.database.operation_log_table'));
+        Schema::table(config('ucenter.database.users_table'), function (Blueprint $table) {
+            $table->string('avatar')->nullable();
+            $table->string('username', 190)->unique();
+            $table->tinyInteger('stat')->nullable();
+            $table->decimal('money')->nullable();
+            $table->string('phone')->nullable();
+        });
     }
 }

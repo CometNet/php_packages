@@ -1,10 +1,7 @@
-@extends('admin::layout')
-
-@section('css')
-    <link rel="stylesheet" href="/vendor/admin/select2/dist/css/select2.min.css">
-@endsection
+@extends(Request::instance()->layout)
 
 @section('content')
+    @include('admin::partials.content-header',['title' => '用户管理'])
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -73,13 +70,4 @@
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
-@endsection
-@section('script')
-    <script src="/vendor/admin/select2/dist/js/select2.min.js"></script>
-    <script>
-        $(".select2").select2({
-            placeholder: "Select a state",
-            allowClear: true,
-        });
-    </script>
 @endsection

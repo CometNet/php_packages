@@ -1,6 +1,7 @@
-@extends('admin::layout')
+@extends(Request::instance()->layout)
 
 @section('content')
+    @include('admin::partials.content-header',['title' => '菜单处理'])
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -92,14 +93,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <!--/.col (left) -->
-                <!-- right column -->
-                <div class="col-md-6">
-
-                </div>
-                <!--/.col (right) -->
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
     </section>
 @endsection

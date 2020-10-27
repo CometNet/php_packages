@@ -1,4 +1,4 @@
-@extends('admin::layout')
+@extends(Request::instance()->layout)
 
 @section('content')
     <!-- Main content -->

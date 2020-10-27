@@ -1,8 +1,10 @@
-<section class="content-header">
+<section class="content-header" style="height: 56px;">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Invoice</h1>
+                @if(isset($title))
+                    <h4>{{$title}}</h4>
+                @endif
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -15,3 +17,5 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
+@include('admin::partials.toastr')
+@include('admin::partials.alerts')

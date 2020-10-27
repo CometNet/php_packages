@@ -20,6 +20,13 @@ class Pjax
      */
     public function handle(Request $request, Closure $next)
     {
+        if ($request->pjax()){
+
+            $request->query->set('layout', 'admin::pjax');
+        }else{
+
+            $request->query->set('layout', 'admin::layout');
+        }
         $response = $next($request);
         if (!$request->pjax() || $response->isRedirection()) {
             return $response;

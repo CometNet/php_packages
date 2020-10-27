@@ -33,6 +33,13 @@ class PermissionController extends Controller
         [
             'field' => 'updated_at',
             'title' => '更新时间'
+        ],
+        [
+            'field' => 'operate',
+            'title' => '操作',
+            "align" => 'center',
+            'events' => 'operateEvents',
+            'formatter' => 'operateFormatter'
         ]
     ];
 
@@ -59,8 +66,11 @@ class PermissionController extends Controller
 
     }
 
-    public function edit(Request $request){
-
+    public function edit(Request $request, $id){
+        return view('admin::permissions.edit',[
+            'http_methods' => $this->getHttpMethodsOptions(),
+            'permission' => Permission::find($id)
+        ]);
     }
 
     public function update(Request $request){

@@ -1,0 +1,16 @@
+<?php
+
+use Illuminate\Routing\Router;
+
+UCenter::routes();
+
+Route::group([
+    'prefix'        => config('ucenter.route.prefix'),
+    'namespace'     => config('ucenter.route.namespace'),
+    'middleware'    => config('ucenter.route.middleware'),
+    'as'            => config('ucenter.route.prefix') . '.',
+], function (Router $router) {
+
+    $router->get('/', 'HomeController@index')->name('home');
+
+});

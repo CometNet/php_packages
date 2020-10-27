@@ -25,7 +25,7 @@
                 "Huixing\\UCenter\\UCenterServiceProvider"
             ],
             "aliases": {
-                "Admin": "Huixing\\UCenter\\Facades\\UCenter"
+                "UCenter": "Huixing\\UCenter\\Facades\\UCenter"
             }
         }
     },

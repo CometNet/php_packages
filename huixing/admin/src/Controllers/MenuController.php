@@ -36,8 +36,7 @@ class MenuController extends Controller
                 $menu->roles()->sync($request->get('roles'));
             }
         }
-
-        $data = $request->all();
+        return redirect(admin_base_path('auth/menu'));
     }
 
     public function show(Request $request){
@@ -60,12 +59,12 @@ class MenuController extends Controller
             $menu->roles()->sync($request->get('roles'));
         }
 
-        return redirect('admin/auth/menu');
+        return redirect(admin_base_path('auth/menu'));
     }
 
     public function destroy(Request $request,$id){
         $menu = Menu::find($id);
         $menu->delete();
-        return redirect('admin/auth/menu');
+        return redirect(admin_base_path('auth/menu'));
     }
 }

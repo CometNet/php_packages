@@ -22,8 +22,8 @@ class UCenterServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'admin.auth'       => Middleware\Authenticate::class,
-        'admin.pjax'       => Middleware\Pjax::class
+        'ucenter.auth'       => Middleware\Authenticate::class,
+        'ucenter.pjax'       => Middleware\Pjax::class
     ];
 
     /**
@@ -32,9 +32,9 @@ class UCenterServiceProvider extends ServiceProvider
      * @var array
      */
     protected $middlewareGroups = [
-        'admin' => [
-            'admin.auth',
-            'admin.pjax'
+        'ucenter' => [
+            'ucenter.auth',
+            'ucenter.pjax'
         ],
     ];
 
@@ -46,9 +46,9 @@ class UCenterServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'admin');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'ucenter');
 
-        if (file_exists($routes = admin_path('routes.php'))) {
+        if (file_exists($routes = ucneter_path('routes.php'))) {
             $this->loadRoutesFrom($routes);
         }
 
@@ -105,10 +105,10 @@ class UCenterServiceProvider extends ServiceProvider
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/../config' => config_path()], 'admin-config');
-            $this->publishes([__DIR__.'/../resources/lang' => resource_path('lang')], 'admin-lang');
-            $this->publishes([__DIR__.'/../database/migrations' => database_path('migrations')], 'admin-migrations');
-            $this->publishes([__DIR__.'/../resources/assets' => public_path('vendor/admin')], 'admin-assets');
+            $this->publishes([__DIR__.'/../config' => config_path()], 'ucenter-config');
+            $this->publishes([__DIR__.'/../resources/lang' => resource_path('lang')], 'ucenter-lang');
+            $this->publishes([__DIR__.'/../database/migrations' => database_path('migrations')], 'ucenter-migrations');
+            $this->publishes([__DIR__.'/../resources/assets' => public_path('vendor/ucenter')], 'ucenter-assets');
         }
     }
 
@@ -119,7 +119,7 @@ class UCenterServiceProvider extends ServiceProvider
      */
     protected function loadAdminAuthConfig()
     {
-        config(Arr::dot(config('admin.auth', []), 'auth.'));
+        config(Arr::dot(config('ucenter.auth', []), 'auth.'));
     }
 
     /**

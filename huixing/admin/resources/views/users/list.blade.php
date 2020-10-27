@@ -1,10 +1,8 @@
-@extends('admin::layout')
-
-@section('css')
-    <link rel="stylesheet" href="/vendor/admin/bootstrap-table/bootstrap-table.min.css">
-@endsection
+@extends(Request::instance()->layout)
 
 @section('content')
+    <link rel="stylesheet" href="/vendor/admin/bootstrap-table/bootstrap-table.min.css">
+    @include('admin::partials.content-header',['title' => '用户列表'])
     <section class="content">
         <div class="card">
             <div class="card-header">
@@ -18,7 +16,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table id="table"></table>
+                <table id="table" class="table table-bordered table-hover table-striped table-sm"></table>
                 <!-- /.row -->
             </div>
         </div>
@@ -42,14 +40,14 @@
             'click .mod': function (e, value, row, index) {
                 window.location.href = window.location.href + '/' + row.id + '/edit';
             },
-            'click .remove': function(e, value, row, index) {
+            'click .remove': function (e, value, row, index) {
                 var r = confirm("是否确定删除？")
                 if (r == true) {
                     var cId = [row.cId];
                     $.post("apiContacterStatus.php", {
                         cId: cId,
                         status: 3
-                    }, function(data) {
+                    }, function (data) {
                         if (data) {
 //                            $('#tb_departments').bootstrapTable(('refresh'));
                             $table.bootstrapTable(('refresh'));
@@ -60,9 +58,11 @@
                 }
             }
         };
-        $('#table').bootstrapTable({
-            url: "{{ admin_base_path('api/users/list') }}",
-            columns: {!! json_encode($table_columns) !!}
+        $(document).ready(function() {
+            $('#table').bootstrapTable({
+                url: "{{ admin_base_path('api/users/list') }}",
+                columns: {!! json_encode($table_columns) !!}
+            });
         });
     </script>
 @endsection

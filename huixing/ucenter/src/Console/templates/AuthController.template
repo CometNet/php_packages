@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyNamespace;
+
+use Huixing\UCenter\Controllers\AuthController as BaseAuthController;
+
+class AuthController extends BaseAuthController
+{
+
+}

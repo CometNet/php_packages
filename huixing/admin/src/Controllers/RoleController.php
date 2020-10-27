@@ -38,6 +38,13 @@ class RoleController extends Controller
         [
             'field' => 'updated_at',
             'title' => '更新时间'
+        ],
+        [
+            'field' => 'operate',
+            'title' => '操作',
+            "align" => 'center',
+            'events' => 'operateEvents',
+            'formatter' => 'operateFormatter'
         ]
     ];
 
@@ -65,8 +72,11 @@ class RoleController extends Controller
 
     }
 
-    public function edit(Request $request){
-
+    public function edit(Request $request, $id){
+        return view('admin::roles.edit',[
+            'permissions' => Permission::all(),
+            'role' => Role::find($id)
+        ]);
     }
 
     public function update(Request $request){

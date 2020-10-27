@@ -4,6 +4,7 @@
 namespace Huixing\Admin\Controllers;
 
 use Huixing\Admin\Facades\Admin;
+use Huixing\Admin\Traits\ValidationTrait;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Lang;
@@ -12,12 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-
-    protected function setTitle(){
-
-    }
-
-
+    use ValidationTrait;
 
     /**
      * @var string
@@ -48,7 +44,13 @@ class AuthController extends Controller
      */
     public function postLogin(Request $request)
     {
-        $this->loginValidator($request->all())->validate();
+        $validator = $this->verify($request, 'users.login');
+
+        if ($validator->fails())
+        {
+            $messages = $validator->messages()->toArray();
+            return back()->withInput()->withErrors($messages);
+        }
 
         $credentials = $request->only([$this->username(), 'password']);
         $remember = $request->get('remember', false);
@@ -62,19 +64,31 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a validator for an incoming login request.
+     * User logout.
      *
-     * @param array $data
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return Redirect
      */
-    protected function loginValidator(array $data)
+    public function getLogout(Request $request)
     {
-        return Validator::make($data, [
-            $this->username()   => 'required',
-            'password'          => 'required',
-        ]);
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect(config('admin.route.prefix'));
     }
+
+    /**
+     * User setting page.
+     *
+     * @param Content $content
+     *
+     * @return Content
+     */
+    public function getSetting()
+    {
+
+    }
+
 
     /**
      * Get the post login redirect path.

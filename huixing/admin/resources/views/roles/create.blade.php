@@ -1,6 +1,7 @@
-@extends('admin::layout')
+@extends(Request::instance()->layout)
 
 @section('content')
+    @include('admin::partials.content-header',['title' => '角色管理'])
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -17,15 +18,15 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">标识</label>
+                                    <label for="slug">标识</label>
                                     <input type="text" name="slug" class="form-control" id="exampleInputEmail1" placeholder="Enter slug">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">名称</label>
+                                    <label for="name">名称</label>
                                     <input type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">权限</label>
+                                    <label for="http_method">权限</label>
                                     <select name="http_method[]" class="form-control select2 select2-hidden-accessible" multiple="multiple" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                                         @foreach($permissions as $item)
                                             <option value="{{$item['id']}}">{{$item['name']}}</option>
